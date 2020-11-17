@@ -3,10 +3,11 @@
 <%- include("./partials/head.ejs") %>
 <body>
     <%- include("./partials/header.ejs") %>
-    <div>
-        <form action="/api/questions/create" method="POST">
+    <main>
+        <h3>New Question</h3>
+        <form id="createQuestionForm" action="/api/questions/create" method="POST">
             <div>
-                <label for="title">Name:</label>
+                <label for="title">Question:</label>
                 <input type="text" id="title" name=question[title] placeholder="Question" required>
             </div>
             <div>
@@ -26,7 +27,7 @@
                 <input type="text" id="ans4" name=question[ans4] placeholder="Question answer D" required>
             </div>
             <div>
-                <label for="correctAns">Correct Answer:</label>
+                <label for="correctAns">Define the Correct Answer:</label>
                 <select name="question[correctAns]" id="correctAns" required>
                     <option value="ans1">A</option>
                     <option value="ans2">B</option>
@@ -37,7 +38,7 @@
             </div>
             <button type="submit"><b>Create</b></button>
         </form>
-    </div>
+    </main>
     <%- include("./partials/footer.ejs") %> 
 </body>
 </html>
