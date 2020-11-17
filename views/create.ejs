@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+<body>
+    <%- include("./partials/header.ejs") %>
+    <div>
+        <form action="/api/questions/create" method="POST">
+            <div>
+                <label for="title">Name:</label>
+                <input type="text" id="title" name=question[title] placeholder="Question" required>
+            </div>
+            <div>
+                <label for="ans1">Answer A:</label>
+                <input type="text" id="ans1" name=question[ans1] placeholder="Question answer A" required>
+            </div>
+            <div>
+                <label for="ans2">Answer B:</label>
+                <input type="text" id="ans2" name=question[ans2] placeholder="Question answer B" required>
+            </div>
+            <div>
+                <label for="ans3">Answer C:</label>
+                <input type="text" id="ans3" name=question[ans3] placeholder="Question answer C" required>
+            </div>
+            <div>
+                <label for="ans4">Answer D:</label>
+                <input type="text" id="ans4" name=question[ans4] placeholder="Question answer D" required>
+            </div>
+            <div>
+                <label for="correctAns">Correct Answer:</label>
+                <select name="question[correctAns]" id="correctAns" required>
+                    <option value="ans1">A</option>
+                    <option value="ans2">B</option>
+                    <option value="ans3">C</option>
+                    <option value="ans4">D</option>
+                </select>
+                <!-- <input type="text" id="correctAns" name=question[correctAns] placeholder="Corrrect Answer" required> -->
+            </div>
+            <button type="submit"><b>Create</b></button>
+        </form>
+    </div>
+    <%- include("./partials/footer.ejs") %> 
+</body>
+</html>

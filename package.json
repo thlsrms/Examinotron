@@ -1,0 +1,20 @@
+{
+  "name": "examinotron",
+  "version": "1.0.0",
+  "description": "Quiz",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "ThalesR",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.15"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
