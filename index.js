@@ -1,6 +1,7 @@
 'use strict';
 const express = require('express');
 const path = require('path');
+const url = require('url');
 require('./db/mngdbconnect');
 
 const questionRouter = require('./routers/question');
@@ -25,11 +26,17 @@ app.use(express.json()); // Parse JSON bodies
 
 // endpoints
 app.get('/', async (req, res) => {
-    res.render('index', { pageTitle: 'Home' });
+    res.render('index', {
+        pageTitle: 'Home', allQuestions: url.format(
+            { pathname: `api/questions/all/` })
+    });
 });
 
 app.get('/create', async (req, res) => {
-    res.render('create', { pageTitle: 'Create new question'});
+    res.render('create', {
+        pageTitle: 'Create new question', allQuestions: url.format(
+            { pathname: `api/questions/all/` })
+    });
 });
 
 // routing
@@ -37,5 +44,8 @@ app.use('/api', questionRouter);
 
 // 404
 app.use((req, res) => {
-    res.status(404).render('404', { pageTitle: '404' });
+    res.status(404).render('404', {
+        pageTitle: '404', allQuestions: url.format(
+            { pathname: `api/questions/all/` })
+    });
 });
