@@ -3,7 +3,19 @@
 <%- include("./partials/head.ejs") %> 
 <body>
     <%- include("./partials/header.ejs") %>
-    <main></main>
+    <main>
+        <% questions.forEach(question => { %>
+         <div>
+             <h4><%= question.title %> </h4>
+             <ol>
+                 <li><%= question.ans1 %> </li>
+                 <li><%= question.ans2 %> </li>
+                 <li><%= question.ans3 %> </li>
+                 <li><%= question.ans4 %> </li>
+             </ol>
+         </div>
+        <% }) %>
+    </main>
     <%- include("./partials/footer.ejs") %> 
 </body>
 </html>

@@ -5,6 +5,7 @@ const url = require('url');
 require('./db/mngdbconnect');
 
 const questionRouter = require('./routers/question');
+const Question = require('./db/models/question');
 
 const port = process.env.PORT || 3000;
 // express app
@@ -27,7 +28,7 @@ app.use(express.json()); // Parse JSON bodies
 // endpoints
 app.get('/', async (req, res) => {
     res.render('index', {
-        pageTitle: 'Home', allQuestions: url.format(
+        pageTitle: 'Home',  questions: await Question.find({}, 'title ans1 ans2 ans3 ans4'), allQuestions: url.format(
             { pathname: `api/questions/all/` })
     });
 });
