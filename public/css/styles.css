@@ -132,3 +132,9 @@ nav {
 #createQuestionForm button:hover {
     cursor: pointer;
 }
+
+.questions-container {
+    display: flex;
+    justify-content: start;
+    align-items: left;
+}

@@ -4,8 +4,9 @@
 <body>
     <%- include("./partials/header.ejs") %>
     <main>
+        <div class="questions-container">
         <% questions.forEach(question => { %>
-         <div>
+         <div class="question">
              <h4><%= question.title %> </h4>
              <ol>
                  <li><%= question.ans1 %> </li>
@@ -15,6 +16,7 @@
              </ol>
          </div>
         <% }) %>
+        </div>
     </main>
     <%- include("./partials/footer.ejs") %> 
 </body>
