@@ -1,24 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<%- include("./partials/head.ejs") %> 
-<body>
-    <%- include("./partials/header.ejs") %>
-    <main>
-        <div class="questions-container">
-            <h2>Last updated:</h2>
-            <% questions.forEach(question => { %>
-             <div class="question">
-                 <h4><%= question.title %> </h4>
-                 <ol type="A">
-                     <li><%= question.ans1 %> </li>
-                     <li><%= question.ans2 %> </li>
-                     <li><%= question.ans3 %> </li>
-                     <li><%= question.ans4 %> </li>
-                 </ol>
-             </div>
-            <% }) %>
+<%- include("./partials/header.ejs") %>
+<main>
+    <div class="questions-container">
+        <h2>Last updated:</h2>
+        <% questions.forEach(question => { %>
+        <div class="question">
+            <h4><%= question.title %> </h4>
+            <ol type="A">
+                <li><%= question.ans1 %> </li>
+                <li><%= question.ans2 %> </li>
+                <li><%= question.ans3 %> </li>
+                <li><%= question.ans4 %> </li>
+            </ol>
         </div>
-    </main>
-    <%- include("./partials/footer.ejs") %> 
-</body>
-</html>
+        <% }) %>
+    </div>
+</main>
+<%- include("./partials/footer.ejs") %>
