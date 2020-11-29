@@ -21,7 +21,7 @@ app.listen(port, (err) => {
 app.set('view engine', 'ejs');
 
 // middleware & static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 app.use(express.json()); // Parse JSON bodies
 
