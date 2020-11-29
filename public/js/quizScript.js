@@ -52,3 +52,7 @@ window.onclick = (e) => {
         quizResultModal.style.display = 'none';
     }
 }
+
+window.onbeforeunload = (e) => {
+    localStorage.clear();
+}
