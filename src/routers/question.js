@@ -16,7 +16,7 @@ router.post('/questions/create', async (req, res) => {
         if (data.length > 0) {
             res.status(304).send('Question already exists');
         } else {
-            await newQuestion.save().then((data) => res.status(201).send(data));
+            await newQuestion.save().then((data) => res.redirect('/'));
         }
     }).catch((err) => res.status(400).send(err));
 });
