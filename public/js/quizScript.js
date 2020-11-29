@@ -6,7 +6,7 @@ const closeModal = document.getElementById('closeModal');
 for (const form of document.forms) {
     form.addEventListener('click', (e) => {
         if (e.target.tagName.toLowerCase() == 'input') {
-            localStorage.setItem(e.target.closest('.question').id, e.target.value)
+            sessionStorage.setItem(e.target.closest('.question').id, e.target.value)
         }
     })
 }
@@ -22,7 +22,7 @@ submitQuizBtn.onclick = async () => {
     let correctAnswers = 0;
     let wrongAnswers = 0;
     answers.data.forEach(question => {
-        let selectedOption = localStorage.getItem(question._id);
+        let selectedOption = sessionStorage.getItem(question._id);
         if (question.correctAns == selectedOption) {
             correctAnswers += 1;
             document.getElementById(`${selectedOption}_${question._id}_label`).classList.add('correct', 'solution');
@@ -54,5 +54,5 @@ window.onclick = (e) => {
 }
 
 window.onbeforeunload = (e) => {
-    localStorage.clear();
+    sessionStorage.clear();
 }
