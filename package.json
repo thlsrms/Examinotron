@@ -2,10 +2,12 @@
   "name": "examinotron",
   "version": "1.0.0",
   "description": "Quiz",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node ./src/index.js",
+    "dev": "npm run code & npm run build-css",
+    "build-css": "sass --watch src/sass:public/css/ --no-source-map -s compressed",
+    "code": "nodemon /src/index.js"
   },
   "author": "ThalesR",
   "license": "MIT",
@@ -15,6 +17,7 @@
     "mongoose": "^5.10.15"
   },
   "devDependencies": {
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.6",
+    "sass": "^1.29.0"
   }
 }
