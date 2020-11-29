@@ -1,7 +1,7 @@
 'use strict';
 const mongoose = require('mongoose');
 
-const Question = mongoose.model('Question', new mongoose.Schema({
+const questionSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
@@ -27,6 +27,18 @@ const Question = mongoose.model('Question', new mongoose.Schema({
         type: String,
         required: true
     },
-}));
+    updated: {
+        type: Date,
+        required: true,
+    }
+});
 
+postSchema.pre('validate', function(next) {
+    if (this.isNew) {
+        this.updated = Date.now()
+        next();
+    }
+})
+
+const Question = mongoose.model('Question', questionSchema);
 module.exports = Question;

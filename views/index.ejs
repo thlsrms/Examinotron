@@ -5,17 +5,18 @@
     <%- include("./partials/header.ejs") %>
     <main>
         <div class="questions-container">
-        <% questions.forEach(question => { %>
-         <div class="question">
-             <h4><%= question.title %> </h4>
-             <ol>
-                 <li><%= question.ans1 %> </li>
-                 <li><%= question.ans2 %> </li>
-                 <li><%= question.ans3 %> </li>
-                 <li><%= question.ans4 %> </li>
-             </ol>
-         </div>
-        <% }) %>
+            <h2>Last updated:</h2>
+            <% questions.forEach(question => { %>
+             <div class="question">
+                 <h4><%= question.title %> </h4>
+                 <ol type="A">
+                     <li><%= question.ans1 %> </li>
+                     <li><%= question.ans2 %> </li>
+                     <li><%= question.ans3 %> </li>
+                     <li><%= question.ans4 %> </li>
+                 </ol>
+             </div>
+            <% }) %>
         </div>
     </main>
     <%- include("./partials/footer.ejs") %> 

@@ -135,6 +135,21 @@ nav {
 
 .questions-container {
     display: flex;
+    flex-direction: column;
+    width: 80%;
     justify-content: start;
     align-items: left;
+}
+
+.questions-container > h2 {
+    margin-bottom: 10px;
+}
+
+.question {
+    margin-bottom: 15px;
+    padding: 5px;
+}
+
+.question li {
+    margin-bottom: 2px;
 }

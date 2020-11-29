@@ -27,9 +27,13 @@ app.use(express.json()); // Parse JSON bodies
 
 // endpoints
 app.get('/', async (req, res) => {
-    res.render('index', {
-        pageTitle: 'Home',  questions: await Question.find({}, 'title ans1 ans2 ans3 ans4'), allQuestions: url.format(
-            { pathname: `api/questions/all/` })
+    await Question.find({}, 'title ans1 ans2 ans3 ans4').then((questions) => {
+        questions.sort((elemA, elemB) => elemA.updated < elemB.updated ? 1 : -1);
+        questions = questions.slice(0, 4); // only the last 4 updated
+        res.render('index', {
+            pageTitle: 'Home',  questions: questions, allQuestions: url.format(
+                { pathname: `api/questions/all/` })
+        });
     });
 });
 
