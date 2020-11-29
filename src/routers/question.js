@@ -12,28 +12,31 @@ router.get('/questions/get', async (req, res) => {
 
 router.post('/questions/create', async (req, res) => {
     let newQuestion = new Question(req.body.question);
-    await Question.find({ title: newQuestion.title }).then(async (data) => {
-        if (data.length > 0) {
-            res.status(304).send('Question already exists');
-        } else {
-            await newQuestion.save().then((data) => res.redirect('/'));
+    let questions = await Question.find({ title: newQuestion.title });
+
+    if (questions.length > 0) {
+        res.status(304).send('Question already exists');
+    } else {
+        try {
+            await newQuestion.save();
+            res.redirect('/');
+        } catch (err) {
+            res.status(500).send(err);
         }
-    }).catch((err) => res.status(400).send(err));
+    }
 });
 
 router.get('/questions/all', async (req, res) => {
-    await Question.find({}, 'title ans1 ans2 ans3 ans4')
-        .then((data) => {
-            res.status(201).send(data);
-        });
+    let questions = await Question.find({}, 'title ans1 ans2 ans3 ans4');
+    res.status(201).send(data);
 });
-
+/* 
 router.patch('/questions/:id', async (req, res) => {
     await Question.update();
 });
 
 router.delete('/questions/:id', async (req, res) => {
     await Question.delete();
-});
+}); */
 
 module.exports = router;
