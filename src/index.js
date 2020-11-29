@@ -1,7 +1,6 @@
 'use strict';
 const express = require('express');
 const path = require('path');
-const url = require('url');
 require('./db/mngdbconnect');
 
 const questionRouter = require('./routers/question');
@@ -30,16 +29,11 @@ app.get('/', async (req, res) => {
     let questions = await Question.find({}, 'title ans1 ans2 ans3 ans4');
     questions.sort((elemA, elemB) => elemA.updated < elemB.updated ? 1 : -1);
     questions = questions.slice(0, 4); // only the last 4 updated
-    res.render('index', { pageTitle: 'Home', questions: questions, allQuestions: url.format(
-        { pathname: `api/questions/all/`}
-    )});
+    res.render('index', { pageTitle: 'Home', questions: questions });
 });
 
 app.get('/create', async (req, res) => {
-    res.render('create', {
-        pageTitle: 'Create new question', allQuestions: url.format(
-            { pathname: `api/questions/all/` })
-    });
+    res.render('create', { pageTitle: 'Create new question' });
 });
 
 // routing
@@ -47,8 +41,5 @@ app.use('/api', questionRouter);
 
 // 404
 app.use((req, res) => {
-    res.status(404).render('404', {
-        pageTitle: '404', allQuestions: url.format(
-            { pathname: `api/questions/all/` })
-    });
+    res.status(404).render('404', { pageTitle: '404' });
 });
