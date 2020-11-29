@@ -1,0 +1,37 @@
+<%- include("./partials/header.ejs") %>
+<main>
+    <h2>Quiz:</h2>
+    <div class="quiz-container">
+        <% for( let i = 0; i < questions.length; i++ ) { %>
+        <form class="question" id="<%= questions[i]._id %>" action="">
+            <h4><span><%= i + 1 %> - </span><%= questions[i].title %></h4>
+            <ol type="A">
+                <li><input type="radio" name="<%= questions[i]._id %>" value="ans1" id="ans1_<%= questions[i]._id %>">
+                    <label for="ans1_<%= questions[i]._id %>" id="ans1_<%= questions[i]._id %>_label"> <%= questions[i].ans1 %></label></li>
+                <li><input type="radio" name="<%= questions[i]._id %>" value="ans2" id="ans2_<%= questions[i]._id %>">
+                    <label for="ans2_<%= questions[i]._id %>" id="ans2_<%= questions[i]._id %>_label"> <%= questions[i].ans2 %></label></li>
+                <li><input type="radio" name="<%= questions[i]._id %>" value="ans3" id="ans3_<%= questions[i]._id %>">
+                    <label for="ans3_<%= questions[i]._id %>" id="ans3_<%= questions[i]._id %>_label"> <%= questions[i].ans3 %></label></li>
+                <li><input type="radio" name="<%= questions[i]._id %>" value="ans4" id="ans4_<%= questions[i]._id %>">
+                    <label for="ans4_<%= questions[i]._id %>" id="ans4_<%= questions[i]._id %>_label"> <%= questions[i].ans4 %></label></li>
+            </ol>
+        </form>
+        <hr>
+        <% } %>
+        <button id="submitQuiz"><b>S</b>ubmit <b>Q</b>uiz</button>
+    </div>
+    <div id="quizResultModal">
+        <div class="quiz-result">
+            <span id="closeModal">&times;</span>
+            <h3>Quiz Result</h3>
+            <div>
+                <div><p>Right answers: <span id="rightAnswersAmount" class="correct">0</span></p></div>
+                <div><p>Wrong answers: <span id="wrongAnswersAmount" class="wrong">0</span></p></div>
+            </div>
+            <div><p>Score: <span id="totalScore">0</span></p></div>
+        </div>
+    </div>
+</main>
+<script src="/js/axios.min.js"></script>
+<script src="/js/quizScript.js"></script>
+<%- include("./partials/footer.ejs") %>

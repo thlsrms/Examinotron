@@ -36,6 +36,11 @@ app.get('/create', async (req, res) => {
     res.render('create', { pageTitle: 'Create new question' });
 });
 
+app.get('/quiz', async (req, res) => {
+    let questions = await Question.find({}, 'title ans1 ans2 ans3 ans4');
+    res.render('quiz', { pageTitle: 'Quiz', questions: questions });
+});
+
 // routing
 app.use('/api', questionRouter);
 
