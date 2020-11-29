@@ -33,7 +33,7 @@ const questionSchema = new mongoose.Schema({
     }
 });
 
-postSchema.pre('validate', function(next) {
+questionSchema.pre('validate', function(next) {
     if (this.isNew) {
         this.updated = Date.now()
         next();
