@@ -28,7 +28,13 @@ router.post('/questions/create', async (req, res) => {
 
 router.get('/questions/all', async (req, res) => {
     let questions = await Question.find({}, 'title ans1 ans2 ans3 ans4');
-    res.status(201).send(data);
+    res.status(201).send(questions);
+});
+
+router.get('/questions/answers', async (req, res) => {
+    let questions = await Question.find({}, 'correctAns');
+    /* JSON.stringify(questions); */
+    res.send(questions);
 });
 /* 
 router.patch('/questions/:id', async (req, res) => {
